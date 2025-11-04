@@ -1,7 +1,8 @@
 ### RETRIEVE Operation
 ```python
 from bookshelf.models import Book
-Book.objects.all().values()
+book = Book.objects.get(title="1984")
+book
 # Expected output:
-# <QuerySet [{'id': 1, 'title': '1984', 'author': 'George Orwell', 'publication_year': 1949}]>
+# <Book: 1984 by George Orwell (1949)>
 ```
