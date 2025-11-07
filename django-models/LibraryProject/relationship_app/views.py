@@ -4,7 +4,9 @@ from .models import Library, Book
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
-from django.contrib.auth.decorators import user_passes_test, permission_required
+from django.contrib.auth.decorators import user_passes_test
+from django.contrib.auth.decorators import permission_required
+
 from .models import UserProfile
 
 
@@ -67,6 +69,7 @@ def add_book(request):
         Book.objects.create(title=title, author_id=author_id)
         return redirect('list_books')
     return render(request, 'relationship_app/add_book.html')
+
 
 @permission_required('relationship_app.can_change_book')
 def edit_book(request, pk):
