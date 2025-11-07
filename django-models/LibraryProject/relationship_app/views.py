@@ -44,5 +44,3 @@ def register(request):
     else:
         form = UserCreationForm()
     return render(request, 'relationship_app/register.html', {'form': form})
-def home(request):
-    return render(request, 'relationship_app/home.html')
