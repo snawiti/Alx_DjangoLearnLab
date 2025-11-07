@@ -1,5 +1,4 @@
 from django.http import HttpResponse
-from django.shortcuts import render
 from django.views.generic.detail import DetailView
 from .models import Library, Book
 from django.shortcuts import render, redirect
@@ -36,13 +35,14 @@ def logout_view(request):
     return render(request, 'relationship_app/logout.html')
 
 # Register view
-def register_view(request):
+def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect('list_books')
+            form.save()
+            return redirect('login')
     else:
         form = UserCreationForm()
     return render(request, 'relationship_app/register.html', {'form': form})
+def home(request):
+    return render(request, 'relationship_app/home.html')
