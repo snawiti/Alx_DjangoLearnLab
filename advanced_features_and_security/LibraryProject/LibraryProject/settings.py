@@ -44,6 +44,7 @@ X_FRAME_OPTIONS = "DENY"
 # Cookies only sent via HTTPS
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
 
 # Content Security Policy (CSP)
 # You must install django-csp or skip this if using custom headers
