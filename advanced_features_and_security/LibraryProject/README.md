@@ -25,5 +25,8 @@ A Django project for managing library records.
 #    - Create group: Admins  → assign can_view, can_edit, can_create, can_delete
 # 2. Assign users to groups through the admin interface.
 
+# CSRF_COOKIE_SECURE ensures cookies are sent only through HTTPS
+# This prevents session hijacking during MITM attacks
 
+# Using ORM filter() prevents SQL injection by parameterizing queries
 
