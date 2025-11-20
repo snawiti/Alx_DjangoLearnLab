@@ -4,14 +4,14 @@ from .models import CustomUser
 
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
-    # Add your custom fields to admin display
+
+    # Add custom fields to the fieldsets
     fieldsets = UserAdmin.fieldsets + (
-        ('Additional Info', {'fields': ('date_of_birth', 'profile_photo')}),
-    )
-    add_fieldsets = UserAdmin.add_fieldsets + (
-        ('Additional Info', {'fields': ('date_of_birth', 'profile_photo')}),
+        (None, {'fields': ('date_of_birth', 'profile_photo')}),
     )
 
-    list_display = ['username', 'email', 'first_name', 'last_name', 'is_staff', 'date_of_birth']
+    add_fieldsets = UserAdmin.add_fieldsets + (
+        (None, {'fields': ('date_of_birth', 'profile_photo')}),
+    )
 
 admin.site.register(CustomUser, CustomUserAdmin)
