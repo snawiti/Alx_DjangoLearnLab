@@ -25,9 +25,18 @@ SECRET_KEY = 'django-insecure-l+0jzr2jeb(&^^%u)2&!r#$#b%n^qtd&ltoi(n@#5%h^2(yqy@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
+# Redirect all HTTP requests to HTTPS
+SECURE_SSL_REDIRECT = True
+
+# Enable HTTP Strict Transport Security (HSTS)
+SECURE_HSTS_SECONDS = 31536000  # 1 year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+
 # Browser security protections
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
+X_FRAME_OPTIONS = "DENY"
 
 # Frame protection – prevents clickjacking
 X_FRAME_OPTIONS = "DENY"
@@ -141,3 +150,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# If behind a proxy/load balancer
+# (Needed on Heroku, Nginx reverse proxy, etc.)
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
